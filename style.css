@@ -43,6 +43,12 @@ a {
     text-decoration: none;
     color: inherit;
     transition: var(--transition);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus, a:active, button:focus, button:active {
+    outline: none;
 }
 
 ul {
