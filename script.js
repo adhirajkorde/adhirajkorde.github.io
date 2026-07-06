@@ -68,38 +68,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact Form Handling (Frontend Only)
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
-
-            // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
-
-            // Simulate API Call
-            setTimeout(() => {
-                console.log('Form Data Collected:', data);
-
-                formStatus.innerHTML = '<p style="color: #10b981; margin-top: 1rem;">Message sent successfully! (Simulation)</p>';
-                contactForm.reset();
-
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
-
-                // Clear status after 5 seconds
-                setTimeout(() => {
-                    formStatus.innerHTML = '';
-                }, 5000);
-            }, 1500);
-        });
-    }
 });
