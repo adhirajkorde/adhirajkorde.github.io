@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build output (keep dist for GitHub Pages)
+# Build output — deployed separately via gh-pages branch
+dist/
 dist-ssr/
 
 # Vite cache
