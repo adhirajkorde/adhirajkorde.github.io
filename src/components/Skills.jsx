@@ -1,46 +1,46 @@
 import { motion } from 'framer-motion'
 import {
-  Code2, Layout, Server, Database, Brain, Wrench,
+  Globe, Layout, Server, Database, Cloud, Brain, Wrench,
 } from 'lucide-react'
 import SectionWrapper, { SectionTitle } from './SectionWrapper'
 import { fadeUp, stagger, scaleIn } from '../utils/animations'
 
 const CATEGORIES = [
   {
-    icon: Code2,
-    label: 'Languages',
-    color: '#6366f1',
-    skills: ['JavaScript', 'Python', 'SQL'],
-  },
-  {
     icon: Layout,
     label: 'Frontend',
     color: '#06b6d4',
-    skills: ['HTML5', 'CSS3', 'Tailwind CSS', 'React.js', 'Redux Toolkit', 'Vite'],
+    skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'Redux Toolkit', 'Vite'],
   },
   {
     icon: Server,
     label: 'Backend',
     color: '#8b5cf6',
-    skills: ['Node.js', 'Express.js', 'FastAPI', 'REST APIs'],
+    skills: ['Python', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'Django', 'REST APIs'],
   },
   {
     icon: Database,
-    label: 'Database',
+    label: 'Databases',
     color: '#10b981',
-    skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'SQLite', 'Prisma ORM'],
+    skills: ['MySQL', 'MongoDB', 'PostgreSQL', 'SQLite', 'SQL', 'Prisma ORM'],
+  },
+  {
+    icon: Cloud,
+    label: 'Cloud & DevOps',
+    color: '#3b82f6',
+    skills: ['AWS', 'Google Cloud', 'Vercel', 'Render', 'Cloudflare'],
   },
   {
     icon: Brain,
-    label: 'AI Skills',
+    label: 'Data Science & ML',
     color: '#f59e0b',
-    skills: ['Large Language Models', 'RAG', 'AI APIs', 'Prompt Engineering', 'LangChain', 'LangGraph'],
+    skills: ['NumPy', 'Pandas', 'Scikit-Learn', 'TensorFlow', 'PyTorch', 'Matplotlib', 'Chart.js', 'LangGraph', 'LLMs', 'RAG', 'LangChain', 'Prompt Engineering'],
   },
   {
     icon: Wrench,
-    label: 'Tools & Platforms',
+    label: 'Tools',
     color: '#ec4899',
-    skills: ['Git', 'GitHub', 'Postman', 'VS Code', 'Render', 'Vercel', 'AWS Basics'],
+    skills: ['Git', 'GitHub', 'VS Code', 'Jupyter', 'Google Colab', 'Postman', 'REST APIs', 'Linux'],
   },
 ]
 
