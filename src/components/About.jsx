@@ -6,8 +6,8 @@ import { fadeUp, stagger } from '../utils/animations'
 const STATS = [
   { value: '2+', label: 'Years Coding', icon: Code2 },
   { value: '10+', label: 'Projects Built', icon: Briefcase },
-  { value: '5+', label: 'Certifications', icon: Award },
-  { value: '1', label: 'Internship', icon: MapPin },
+  { value: '6+', label: 'Certifications', icon: Award },
+  { value: '2', label: 'Internships', icon: MapPin },
 ]
 
 export default function About() {
@@ -16,7 +16,7 @@ export default function About() {
       <SectionTitle label="Who I Am" title="About Me" />
 
       {/* Stats */}
-      <motion.div variants={stagger} className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+      <motion.div variants={stagger} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {STATS.map(({ value, label, icon: Icon }) => (
           <motion.div
             key={label}

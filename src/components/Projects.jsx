@@ -2,7 +2,7 @@ import { useRef, useState, useMemo } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import {
   ExternalLink, Github, Sparkles, FileText, Wallet, Users,
-  CheckCircle2, Search, LayoutGrid, Code2, Layers,
+  CheckCircle2, Search, LayoutGrid, Code2, Layers, Calendar,
 } from 'lucide-react'
 import SectionWrapper, { SectionTitle } from './SectionWrapper'
 import { fadeUp, scaleIn, stagger } from '../utils/animations'
@@ -12,107 +12,129 @@ import { fadeUp, scaleIn, stagger } from '../utils/animations'
 const PROJECTS = [
   {
     id: 1,
+    title: 'Daily Scheduler — Employee Attendance Management System',
+    subtitle: 'Full Stack Remote Attendance & HR Platform',
+    category: 'Full Stack',
+    status: 'Live',
+    duration: '5 weeks',
+    description:
+      'A full-stack attendance system built for remote teams featuring employee check-in/out, leave request workflows, real-time attendance tracking, automated record processing, and Excel reports to streamline HR administration.',
+    highlights: [
+      'Employee check-in & check-out',
+      'Leave management system',
+      'Role-based access control (RBAC)',
+      'Real-time attendance tracking',
+      'Automated record processing',
+      'Excel reports to reduce HR load',
+      'PostgreSQL & FastAPI backend',
+    ],
+    tech: ['Next.js', 'FastAPI', 'TypeScript', 'Python', 'PostgreSQL', 'Tailwind CSS', 'JWT', 'REST APIs'],
+    liveUrl: 'https://daily-scheduler-web.vercel.app',
+    githubUrl: 'https://github.com/adhirajkorde',
+    accent: '#8b5cf6',
+    icon: Calendar,
+  },
+  {
+    id: 2,
+    title: 'SmartHire — Resume Screening & Candidate Ranking',
+    subtitle: 'AI & MERN Recruitment Platform',
+    category: 'MERN Stack',
+    status: 'Live',
+    duration: '5 weeks',
+    description:
+      'A modern resume screening and candidate ranking platform that extracts candidate skills, education, and experience from resumes, calculates matching scores against job descriptions, and ranks applicants for recruiters.',
+    highlights: [
+      'Resume parsing (PDF/DOC)',
+      'Candidate matching engine',
+      'Skills & experience scoring',
+      'Recruiter dashboard',
+      'CSV export functionality',
+      'JWT authentication & Prisma',
+    ],
+    tech: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Prisma', 'JWT'],
+    liveUrl: 'https://resume-screening-and-candidate-ranking-c8ue.onrender.com',
+    githubUrl: 'https://github.com/adhirajkorde',
+    accent: '#f59e0b',
+    icon: Users,
+  },
+  {
+    id: 3,
     title: 'AI-First HCP CRM Interaction Logger',
     subtitle: 'Enterprise AI-Powered Healthcare CRM',
     category: 'AI',
     status: 'Completed',
     duration: '2 months',
     description:
-      'An enterprise-grade AI-powered Healthcare Professional CRM enabling pharma reps to log doctor interactions via structured forms or natural language AI chat — extracting insights, generating follow-up tasks, and visualizing engagement analytics.',
+      'An enterprise-grade AI-powered Healthcare Professional CRM enabling pharma reps to log doctor interactions via structured forms or natural language AI chat — extracting insights, automating follow-up tasks, and analyzing sentiment.',
     highlights: [
-      'AI-powered interaction logging',
-      'LangGraph workflow automation',
-      'LLM-based information extraction',
+      'Multi-agent AI workflows',
+      'LangGraph & LangChain automation',
+      'LLM-based entity extraction',
+      'Doctor interaction sentiment analysis',
       'Interactive analytics dashboard',
-      'Authentication & role management',
-      'PostgreSQL database',
-      'Responsive enterprise UI',
+      'PostgreSQL database & Redis caching',
     ],
-    tech: ['React', 'Redux Toolkit', 'FastAPI', 'Python', 'LangGraph', 'LangChain', 'Groq API', 'PostgreSQL', 'SQLAlchemy'],
-    liveUrl: '#',
+    tech: ['React', 'Redux Toolkit', 'FastAPI', 'Python', 'LangGraph', 'LangChain', 'Groq API', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
+    liveUrl: 'https://github.com/adhirajkorde',
     githubUrl: 'https://github.com/adhirajkorde',
     accent: '#6366f1',
     icon: Sparkles,
   },
   {
-    id: 2,
-    title: 'DocFlow — Collaborative Document Editor',
-    subtitle: 'Google Docs-Inspired Editor',
-    category: 'Full Stack',
-    status: 'Completed',
-    duration: '6 weeks',
-    description:
-      'A Google Docs-inspired collaborative document editor where users can create, edit, import, autosave, and securely share rich-text documents with view or edit permissions using JWT authentication.',
-    highlights: [
-      'Rich Text Editor',
-      'JWT Authentication',
-      'Autosave',
-      'Document Sharing',
-      'Markdown Import',
-      'Role-based Permissions',
-      'Responsive Dashboard',
-    ],
-    tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'SQLite', 'Prisma', 'JWT', 'Axios'],
-    liveUrl: '#',
-    githubUrl: 'https://github.com/adhirajkorde',
-    accent: '#06b6d4',
-    icon: FileText,
-  },
-  {
-    id: 3,
+    id: 4,
     title: 'Personal Expense Tracker & Budget Manager',
     subtitle: 'Full Stack Finance Application',
     category: 'Python',
     status: 'Live',
     duration: '4 weeks',
     description:
-      'A modern responsive personal finance app that helps users track income, expenses, monthly budgets, and spending analytics through an interactive dashboard with real-time charts.',
+      'A modern responsive personal finance app that helps users track income, expenses, monthly budgets, and spending analytics through an interactive dashboard with real-time Chart.js charts.',
     highlights: [
-      'Expense & Income Tracking',
-      'Monthly Budget Management',
-      'Interactive Charts & Analytics',
-      'JWT Authentication',
-      'Dark & Light Mode',
-      'Responsive Design',
+      'Expense & income tracking',
+      'Monthly budget management',
+      'Interactive charts & analytics',
+      'JWT authentication',
+      'Dark & light mode support',
+      'Responsive design',
     ],
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Chart.js', 'Python', 'Flask', 'SQLite', 'JWT'],
+    tech: ['Python', 'Flask', 'HTML5', 'CSS3', 'JavaScript', 'SQLite', 'Chart.js', 'JWT'],
     liveUrl: 'https://personal-expense-tracker-budget-manager.onrender.com',
     githubUrl: 'https://github.com/adhirajkorde',
     accent: '#10b981',
     icon: Wallet,
   },
   {
-    id: 4,
-    title: 'SmartHire — Resume Screening & Ranking',
-    subtitle: 'MERN Stack Recruitment Platform',
-    category: 'MERN Stack',
-    status: 'Live',
-    duration: '5 weeks',
+    id: 5,
+    title: 'DocFlow — Collaborative Document Editor',
+    subtitle: 'Google Docs-Inspired Editor',
+    category: 'Full Stack',
+    status: 'Completed',
+    duration: '6 weeks',
     description:
-      'A modern Resume Screening and Candidate Ranking platform enabling recruiters to upload resumes, compare against job descriptions, calculate matching scores, and rank candidates using an intelligent scoring engine.',
+      'A Google Docs-inspired collaborative document editor where users can create, edit, import markdown, autosave, and securely share rich-text documents with view or edit permissions using JWT authentication.',
     highlights: [
-      'Resume Parsing (PDF/DOC)',
-      'Candidate Ranking Engine',
-      'Skills & Experience Analysis',
-      'Recruiter Dashboard',
-      'CSV Export',
-      'JWT Authentication',
+      'Rich text editing workspace',
+      'JWT authentication',
+      'Real-time autosave',
+      'Secure document sharing',
+      'Markdown import & export',
+      'Role-based permissions',
     ],
-    tech: ['Next.js', 'React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT'],
-    liveUrl: 'https://resume-screening-and-candidate-ranking-c8ue.onrender.com',
+    tech: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'SQLite', 'Prisma', 'JWT', 'Axios'],
+    liveUrl: 'https://github.com/adhirajkorde',
     githubUrl: 'https://github.com/adhirajkorde',
-    accent: '#f59e0b',
-    icon: Users,
+    accent: '#06b6d4',
+    icon: FileText,
   },
 ]
 
 const FILTERS = ['All', 'AI', 'Full Stack', 'MERN Stack', 'Python']
 
 const STATS = [
-  { value: '4', label: 'Total Projects', icon: LayoutGrid },
+  { value: '5', label: 'Total Projects', icon: LayoutGrid },
   { value: '20+', label: 'Technologies', icon: Code2 },
-  { value: '4', label: 'GitHub Repos', icon: Github },
-  { value: '2', label: 'Live Deployments', icon: Layers },
+  { value: '5', label: 'GitHub Repos', icon: Github },
+  { value: '3', label: 'Live Deployments', icon: Layers },
 ]
 
 // ─── Project Card ─────────────────────────────────────────────────────────────
@@ -125,8 +147,8 @@ function ProjectCard({ project }) {
   const y = useMotionValue(0)
   const sx = useSpring(x, { stiffness: 150, damping: 20 })
   const sy = useSpring(y, { stiffness: 150, damping: 20 })
-  const rotateX = useTransform(sy, [-0.5, 0.5], ['6deg', '-6deg'])
-  const rotateY = useTransform(sx, [-0.5, 0.5], ['-6deg', '6deg'])
+  const rotateX = useTransform(sy, [-0.5, 0.5], ['5deg', '-5deg'])
+  const rotateY = useTransform(sx, [-0.5, 0.5], ['-5deg', '5deg'])
 
   const onMove = (e) => {
     const r = ref.current?.getBoundingClientRect()
@@ -137,6 +159,7 @@ function ProjectCard({ project }) {
   const onLeave = () => { x.set(0); y.set(0); setHovered(false) }
 
   const { title, subtitle, description, highlights, tech, liveUrl, githubUrl, accent, icon: Icon, status, duration } = project
+  const hasLiveUrl = liveUrl && liveUrl !== '#' && !liveUrl.startsWith('https://github')
 
   return (
     <motion.div
@@ -147,7 +170,7 @@ function ProjectCard({ project }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={onLeave}
       className="relative flex flex-col rounded-2xl overflow-hidden group transition-all duration-300"
-      whileHover={{ y: -8 }}
+      whileHover={{ y: -6 }}
     >
       {/* Gradient border wrapper */}
       <div
@@ -202,7 +225,11 @@ function ProjectCard({ project }) {
         <div className="absolute top-3 right-3 flex items-center gap-1.5">
           <span
             className="px-2 py-0.5 text-[10px] font-bold rounded-full"
-            style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}35` }}
+            style={{
+              background: status === 'Live' ? '#10b98120' : `${accent}20`,
+              color: status === 'Live' ? '#10b981' : accent,
+              border: `1px solid ${status === 'Live' ? '#10b98140' : `${accent}35`}`,
+            }}
           >
             {status}
           </span>
@@ -211,10 +238,10 @@ function ProjectCard({ project }) {
           </span>
         </div>
 
-        {/* Tech badges — bottom, slide up on hover */}
+        {/* Tech badges — bottom */}
         <motion.div
           className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1"
-          animate={hovered ? { y: 0, opacity: 1 } : { y: 6, opacity: 0.5 }}
+          animate={hovered ? { y: 0, opacity: 1 } : { y: 4, opacity: 0.7 }}
           transition={{ duration: 0.3 }}
         >
           {tech.slice(0, 4).map((t) => (
@@ -254,7 +281,7 @@ function ProjectCard({ project }) {
           {highlights.map((h) => (
             <li key={h} className="flex items-start gap-1.5 text-[11px] text-muted">
               <CheckCircle2 size={11} className="mt-0.5 flex-shrink-0" style={{ color: accent }} />
-              {h}
+              <span className="line-clamp-1">{h}</span>
             </li>
           ))}
         </ul>
@@ -279,18 +306,34 @@ function ProjectCard({ project }) {
 
         {/* Buttons */}
         <div className="flex items-center gap-2">
-          <motion.a
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold text-white rounded-xl transition-all duration-200"
-            style={{ background: accent }}
-            whileHover={{ scale: 1.04, boxShadow: `0 0 22px ${accent}45` }}
-            whileTap={{ scale: 0.96 }}
-          >
-            <ExternalLink size={12} />
-            Live Demo
-          </motion.a>
+          {hasLiveUrl ? (
+            <motion.a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold text-white rounded-xl transition-all duration-200"
+              style={{ background: accent }}
+              whileHover={{ scale: 1.04, boxShadow: `0 0 22px ${accent}45` }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <ExternalLink size={12} />
+              Live Demo
+            </motion.a>
+          ) : (
+            <motion.a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold text-white rounded-xl transition-all duration-200"
+              style={{ background: `${accent}30`, border: `1px solid ${accent}50` }}
+              whileHover={{ scale: 1.04, background: accent }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <Github size={12} />
+              View Source
+            </motion.a>
+          )}
+
           <motion.a
             href={githubUrl}
             target="_blank"
@@ -338,7 +381,7 @@ export default function Projects() {
       <SectionTitle
         label="What I've Built"
         title="Featured Projects"
-        subtitle="A selection of projects showcasing full-stack development, AI engineering, and modern web applications."
+        subtitle="A selection of production-grade projects showcasing full-stack engineering, AI/MCP systems, and modern web applications."
       />
 
       {/* Stats */}

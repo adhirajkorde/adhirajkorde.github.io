@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, Calendar, Award } from 'lucide-react'
+import { GraduationCap, Calendar, Award, MapPin } from 'lucide-react'
 import SectionWrapper, { SectionTitle } from './SectionWrapper'
 import { fadeLeft, stagger } from '../utils/animations'
 
 const EDUCATION = [
   {
-    degree: 'Bachelor of Engineering — Computer Science',
+    degree: 'Bachelor of Computer Engineering',
     institution: 'Guru Gobind Singh College of Engineering and Research',
     location: 'Nashik, Maharashtra',
     period: '2022 – 2026',
-    grade: 'Pursuing',
-    highlights: ['Full Stack Development', 'Data Structures & Algorithms', 'Database Management', 'Cloud Computing'],
+    grade: 'Completed',
+    highlights: ['Full Stack Development', 'Data Structures & Algorithms', 'Database Management Systems', 'Cloud & AI Technologies'],
     accent: '#6366f1',
   },
   {
-    degree: 'HSC — Science (PCM + CS)',
+    degree: 'HSC — Higher Secondary Certificate (Science PCM + CS)',
     institution: 'K.A.M. Patil Higher and Secondary School',
     location: 'Pimpalner, Maharashtra',
     period: '2020 – 2022',
@@ -39,7 +39,7 @@ export default function Education() {
       <SectionTitle
         label="Academic Background"
         title="Education"
-        subtitle="My academic journey that laid the foundation for my engineering career."
+        subtitle="My academic foundation in Computer Engineering, mathematics, and software development."
       />
 
       <div className="max-w-3xl mx-auto">
@@ -62,7 +62,7 @@ export default function Education() {
               >
                 {/* Dot */}
                 <motion.div
-                  className="absolute left-0 top-5 w-12 h-12 rounded-full flex items-center justify-center"
+                  className="absolute left-0 top-5 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
                   style={{ background: `${accent}18`, border: `2px solid ${accent}` }}
                   initial={{ scale: 0, rotate: -180 }}
                   whileInView={{ scale: 1, rotate: 0 }}
@@ -74,16 +74,22 @@ export default function Education() {
 
                 {/* Card */}
                 <motion.div
-                  className="glass rounded-2xl p-6 glow-hover transition-all duration-300"
+                  className="glass rounded-2xl p-6 glow-hover transition-all duration-300 relative overflow-hidden"
                   whileHover={{ y: -3 }}
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div>
                       <h3 className="font-bold text-white leading-snug">{degree}</h3>
-                      <p className="text-sm mt-1" style={{ color: accent }}>{institution}</p>
+                      <p className="text-sm mt-1 font-medium" style={{ color: accent }}>{institution}</p>
                     </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold"
-                      style={{ background: `${accent}18`, color: accent, border: `1px solid ${accent}30` }}>
+                    <div
+                      className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold"
+                      style={{
+                        background: grade === 'Completed' ? '#10b98118' : `${accent}18`,
+                        color: grade === 'Completed' ? '#10b981' : accent,
+                        border: `1px solid ${grade === 'Completed' ? '#10b98135' : `${accent}30`}`,
+                      }}
+                    >
                       <Award size={11} />
                       {grade}
                     </div>
@@ -91,18 +97,21 @@ export default function Education() {
 
                   <div className="flex items-center gap-4 text-xs text-muted mb-4">
                     <span className="flex items-center gap-1.5">
-                      <Calendar size={11} />
+                      <Calendar size={11} className="text-accent" />
                       {period}
                     </span>
-                    <span>{location}</span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin size={11} className="text-accent" />
+                      {location}
+                    </span>
                   </div>
 
                   <div className="flex flex-wrap gap-2">
                     {highlights.map((h) => (
                       <span
                         key={h}
-                        className="px-2.5 py-1 text-xs rounded-lg"
-                        style={{ background: `${accent}10`, color: '#9ca3af', border: `1px solid ${accent}20` }}
+                        className="px-2.5 py-1 text-xs rounded-lg font-medium"
+                        style={{ background: `${accent}10`, color: '#d1d5db', border: `1px solid ${accent}20` }}
                       >
                         {h}
                       </span>

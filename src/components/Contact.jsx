@@ -15,7 +15,7 @@ const SOCIALS = [
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/adhiraj-korde',
+    value: 'linkedin.com/in/adhiraj-korde-42aa56316',
     href: 'https://www.linkedin.com/in/adhiraj-korde-42aa56316',
     color: '#0a66c2',
   },

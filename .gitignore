@@ -1,19 +1,26 @@
 # Dependencies
 node_modules/
+/.pnp
+.pnp.js
 
-# Build output — deployed separately via gh-pages branch
+# Production / Build output
 dist/
 dist-ssr/
+build/
+out/
 
-# Vite cache
+# Vite & Bundler cache
 .vite/
+.parcel-cache/
+.cache/
 
-# Environment variables
+# Environment Variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.env
 
 # Logs
 logs/
@@ -22,20 +29,63 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# Editor
-.vscode/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+env/
+ENV/
+.pytest_cache/
+
+# Editor & IDE files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.sublime-workspace
+*.sublime-project
 
-# OS
+# Operating System Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
 
-# Optional
+# Testing & Coverage
 coverage/
-*.local
+*.lcov
+.nyc_output
+
+# Temporary files
+*.tmp
+*.temp

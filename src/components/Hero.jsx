@@ -3,15 +3,21 @@ import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail, Download, ExternalLink } from 'lucide-react'
 import { stagger, fadeUp, blurReveal } from '../utils/animations'
 
-const ROLES = ['Full Stack Developer', 'MERN Stack Developer', 'CS Graduate', 'AI App Builder']
+const ROLES = [
+  'Full Stack Developer',
+  'MERN Stack Developer',
+  'AI & MCP Developer',
+  'Software Engineer',
+  'React & Next.js Builder',
+]
 
 const TECH_ICONS = [
   { label: 'React', color: '#61DAFB', pos: 'top-[15%] left-[8%]', delay: 0 },
   { label: 'Node', color: '#68A063', pos: 'top-[25%] right-[10%]', delay: 0.5 },
   { label: 'Python', color: '#FFD43B', pos: 'bottom-[30%] left-[6%]', delay: 1 },
-  { label: 'MongoDB', color: '#47A248', pos: 'bottom-[20%] right-[8%]', delay: 0.8 },
-  { label: 'TS', color: '#3178C6', pos: 'top-[55%] left-[3%]', delay: 1.2 },
-  { label: 'AI', color: '#A78BFA', pos: 'top-[10%] right-[25%]', delay: 0.3 },
+  { label: 'Next.js', color: '#FFFFFF', pos: 'bottom-[20%] right-[8%]', delay: 0.8 },
+  { label: 'MCP', color: '#A78BFA', pos: 'top-[55%] left-[3%]', delay: 1.2 },
+  { label: 'AI/LLM', color: '#06b6d4', pos: 'top-[10%] right-[25%]', delay: 0.3 },
 ]
 
 function TypingText() {
@@ -82,7 +88,7 @@ export default function Hero() {
       {TECH_ICONS.map(({ label, color, pos, delay }) => (
         <motion.div
           key={label}
-          className={`absolute hidden lg:flex items-center justify-center w-12 h-12 rounded-xl glass-light text-xs font-bold ${pos}`}
+          className={`absolute hidden lg:flex items-center justify-center px-3 h-10 rounded-xl glass-light text-xs font-bold ${pos}`}
           style={{ color, borderColor: `${color}30` }}
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 4 + delay, repeat: Infinity, ease: 'easeInOut', delay }}
@@ -101,7 +107,7 @@ export default function Hero() {
           {/* Badge */}
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-light border border-accent/20 text-sm text-muted">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            Available for opportunities
+            Available for Opportunities
           </motion.div>
 
           {/* Name */}
@@ -118,8 +124,7 @@ export default function Hero() {
 
           {/* Description */}
           <motion.p variants={fadeUp} className="max-w-2xl text-base sm:text-lg text-muted leading-relaxed">
-            Computer Science graduate passionate about Full Stack Web Development with hands-on experience in the MERN Stack.
-            Building modern AI-powered web applications and scalable backend systems.
+            Computer Science Graduate passionate about Full Stack Web Development (MERN Stack), AI-powered applications, and Model Context Protocol (MCP) server development.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -135,10 +140,10 @@ export default function Hero() {
             </motion.button>
 
             <motion.a
-              href="/resume.pdf"
-              download
+              href="./Adhiraj_Korde_Resume.pdf"
+              download="Adhiraj_Korde_Resume.pdf"
               className="flex items-center gap-2 px-7 py-3.5 glass-light border border-white/10 hover:border-accent/40 text-white font-semibold rounded-xl transition-all duration-200"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, borderColor: '#6366f1' }}
               whileTap={{ scale: 0.95 }}
             >
               <Download size={16} />

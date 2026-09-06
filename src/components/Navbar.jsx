@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Download } from 'lucide-react'
 import { useScrollProgress } from '../hooks/useScrollProgress'
 import { useActiveSection } from '../hooks/useActiveSection'
 
@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -54,7 +55,7 @@ export default function Navbar() {
           <motion.a
             href="#home"
             onClick={(e) => { e.preventDefault(); handleNav('#home') }}
-            className="text-xl font-bold text-gradient"
+            className="text-xl font-bold text-gradient cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -62,7 +63,7 @@ export default function Navbar() {
           </motion.a>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-1">
+          <ul className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map(({ label, href }) => {
               const sectionId = href.replace('#', '')
               const isActive = active === sectionId
@@ -70,7 +71,7 @@ export default function Navbar() {
                 <li key={label}>
                   <motion.button
                     onClick={() => handleNav(href)}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                    className={`relative px-3.5 py-1.5 text-xs font-medium rounded-lg transition-colors duration-200 ${
                       isActive ? 'text-white' : 'text-muted hover:text-white'
                     }`}
                     whileHover={{ scale: 1.05 }}
@@ -90,21 +91,35 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* CTA */}
-          <motion.button
-            onClick={() => handleNav('#contact')}
-            className="hidden md:flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-accent hover:bg-accent/90 text-white rounded-lg transition-all duration-200"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(99,102,241,0.4)' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Let's Talk
-          </motion.button>
+          {/* CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <motion.a
+              href="./Adhiraj_Korde_Resume.pdf"
+              download="Adhiraj_Korde_Resume.pdf"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold glass-light border border-white/10 hover:border-accent/40 text-white rounded-lg transition-all duration-200"
+              whileHover={{ scale: 1.05, borderColor: '#6366f1' }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Download size={13} />
+              Resume
+            </motion.a>
+
+            <motion.button
+              onClick={() => handleNav('#contact')}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-accent hover:bg-accent/90 text-white rounded-lg transition-all duration-200"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(99,102,241,0.4)' }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Let's Talk
+            </motion.button>
+          </div>
 
           {/* Mobile menu toggle */}
           <motion.button
-            className="md:hidden text-muted hover:text-white p-2"
+            className="lg:hidden text-muted hover:text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             whileTap={{ scale: 0.9 }}
+            aria-label="Toggle menu"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </motion.button>
@@ -119,7 +134,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-[60px] left-0 right-0 z-40 glass border-b border-border/50 md:hidden"
+            className="fixed top-[60px] left-0 right-0 z-40 glass border-b border-border/50 lg:hidden shadow-2xl"
           >
             <ul className="flex flex-col p-4 gap-1">
               {NAV_LINKS.map(({ label, href }) => (
@@ -132,10 +147,18 @@ export default function Navbar() {
                   </button>
                 </li>
               ))}
-              <li className="mt-2">
+              <li className="mt-2 pt-2 border-t border-white/5 flex gap-2">
+                <a
+                  href="./Adhiraj_Korde_Resume.pdf"
+                  download="Adhiraj_Korde_Resume.pdf"
+                  className="flex-1 flex items-center justify-center gap-1.5 px-4 py-3 text-sm font-semibold glass-light border border-white/10 text-white rounded-lg text-center"
+                >
+                  <Download size={14} />
+                  Resume
+                </a>
                 <button
                   onClick={() => handleNav('#contact')}
-                  className="w-full px-4 py-3 text-sm font-semibold bg-accent text-white rounded-lg"
+                  className="flex-1 px-4 py-3 text-sm font-semibold bg-accent text-white rounded-lg"
                 >
                   Let's Talk
                 </button>
